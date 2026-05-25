@@ -212,29 +212,41 @@ section{padding:110px 2.5rem}
 .portfolio-overlay h4{font-size:.98rem;font-weight:700;color:#fff}
 
 /* PRICING */
-.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:4rem}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:4rem}
 @media(max-width:900px){.pricing-grid{grid-template-columns:1fr}}
-.pricing-card{background:var(--dark);border:1px solid var(--border);border-radius:var(--radius);padding:3rem 2.5rem;position:relative;overflow:hidden;transition:all .4s cubic-bezier(0.23, 1, 0.32, 1);display:flex;flex-direction:column;box-shadow:var(--shadow-sm)}
-.pricing-card:hover{transform:translateY(-10px);box-shadow:var(--shadow-lg);border-color:rgba(255,109,122,0.15)}
-.pricing-card.featured{background:linear-gradient(165deg,var(--dark),rgba(255,109,122,0.03));border:2px solid rgba(255,109,122,0.25);z-index:1}
-.pricing-popular{position:absolute;top:1.8rem;right:1.8rem;background:var(--blue);color:#fff;font-size:.7rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:.35rem 1rem;border-radius:50px;box-shadow:0 4px 12px rgba(255,109,122,0.3)}
-.p-icon{width:56px;height:56px;margin-bottom:1.5rem;background:linear-gradient(135deg,rgba(255,109,122,0.12),rgba(181,140,255,0.06));border:1px solid rgba(255,109,122,0.2);border-radius:15px;display:flex;align-items:center;justify-content:center;transition:transform .4s}
-.pricing-card:hover .p-icon{transform:scale(1.1) rotate(3deg)}
+.pricing-card{background:var(--dark);border:1px solid var(--border);border-radius:16px;padding:0;position:relative;overflow:hidden;transition:border-color .3s ease,box-shadow .3s ease,transform .3s ease;box-shadow:var(--shadow-sm)}
+.pricing-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:rgba(37,99,235,0.22)}
+.pricing-card.open{box-shadow:var(--shadow-lg);border-color:rgba(37,99,235,0.35)}
+.pricing-card.featured{border:1.5px solid rgba(37,99,235,0.38);z-index:1}
+.pricing-card.featured::before{content:'';position:absolute;left:0;right:0;top:0;height:3px;background:var(--blue)}
+.pricing-popular{position:static;background:var(--blue-pale);color:var(--blue-dark);font-size:.68rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:.32rem .72rem;border-radius:999px}
+.pricing-card-head{width:100%;background:transparent;color:inherit;text-align:left;padding:2rem;display:grid;grid-template-columns:auto 1fr auto;gap:1rem;align-items:center}
+.pricing-card-head:focus-visible,.p-btn:focus-visible,.form-submit:focus-visible{box-shadow:0 0 0 4px rgba(37,99,235,0.16);outline:none}
+.p-icon{width:48px;height:48px;background:var(--blue-pale);border:1px solid rgba(37,99,235,0.12);border-radius:12px;display:flex;align-items:center;justify-content:center;transition:transform .3s}
+.pricing-card:hover .p-icon{transform:scale(1.04)}
 .p-icon svg{width:26px;height:26px;fill:none;stroke:var(--blue);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.pricing-card h3{font-size:1.4rem;font-weight:800;margin-bottom:.6rem;color:var(--text);letter-spacing:-.3px}
-.p-desc{font-size:.92rem;color:var(--text-muted);margin-bottom:2rem;line-height:1.75}
-.price-row{display:flex;align-items:baseline;gap:.5rem;margin-bottom:.5rem}
+.pricing-card h3{font-size:1.15rem;font-weight:800;margin-bottom:.25rem;color:var(--text);letter-spacing:-.2px}
+.pricing-popular + h3{margin-top:.55rem}
+.p-desc{font-size:.9rem;color:var(--text-muted);line-height:1.65;margin:0}
+.price-row{display:flex;align-items:baseline;gap:.4rem;margin-top:.4rem}
 .p-from{font-size:.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;font-weight:700}
-.p-amount{font-family:'Syne',sans-serif;font-size:3.5rem;font-weight:800;color:var(--text);line-height:1}
+.p-amount{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;color:var(--text);line-height:1}
 .p-period{font-size:.95rem;color:var(--text-muted);font-weight:500}
-.p-divider{height:1px;background:var(--border);margin:2rem 0}
-.p-features{list-style:none;display:flex;flex-direction:column;gap:1.1rem;margin-bottom:2.5rem;flex:1}
+.p-toggle{width:36px;height:36px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;transition:all .3s;background:var(--dark2)}
+.p-toggle svg{width:15px;height:15px;fill:none;stroke:var(--text-muted);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;transition:transform .3s,stroke .3s}
+.pricing-card.open .p-toggle{background:var(--blue);border-color:var(--blue)}
+.pricing-card.open .p-toggle svg{stroke:#fff;transform:rotate(45deg)}
+.pricing-card-body{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(0.4, 0, 0.2, 1)}
+.pricing-card-inner{padding:0 2rem 2rem}
+.p-divider{height:1px;background:var(--border);margin:0 0 1.5rem}
+.p-features{list-style:none;display:flex;flex-direction:column;gap:1rem;margin-bottom:1.8rem}
 .p-features li{display:flex;align-items:flex-start;gap:.9rem;font-size:.92rem;color:var(--text-muted);line-height:1.4}
-.p-features li::before{content:'';width:18px;height:18px;margin-top:2px;flex-shrink:0;background:rgba(255,109,122,0.1);border:1px solid rgba(255,109,122,0.25);border-radius:4px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpolyline points='3,8 6.5,11.5 13,5' fill='none' stroke='%23FF6D7A' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-size:12px;background-repeat:no-repeat;background-position:center}
+.p-features li::before{content:'';width:18px;height:18px;margin-top:2px;flex-shrink:0;background:var(--blue-pale);border:1px solid rgba(37,99,235,0.2);border-radius:4px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpolyline points='3,8 6.5,11.5 13,5' fill='none' stroke='%232563eb' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-size:12px;background-repeat:no-repeat;background-position:center}
 .p-btn{width:100%;padding:1rem;border-radius:12px;border:1.5px solid var(--blue);background:transparent;color:var(--blue);font-weight:800;font-size:1rem;transition:all .3s ease;margin-top:auto}
-.p-btn:hover{background:var(--blue);color:#fff;transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,109,122,0.25)}
-.pricing-card.featured .p-btn{background:var(--blue);color:#fff;border-color:var(--blue);box-shadow:0 10px 30px -5px rgba(255,109,122,0.3)}
-.pricing-card.featured .p-btn:hover{background:var(--blue-dark);box-shadow:0 12px 35px rgba(255,109,122,0.4)}
+.p-btn:hover{background:var(--blue);color:#fff;transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,99,235,0.22)}
+.pricing-card.featured .p-btn{background:var(--blue);color:#fff;border-color:var(--blue);box-shadow:0 10px 30px -5px rgba(37,99,235,0.25)}
+.pricing-card.featured .p-btn:hover{background:var(--blue-dark);box-shadow:0 12px 35px rgba(37,99,235,0.32)}
+@media(max-width:560px){.pricing-card-head{grid-template-columns:auto 1fr;padding:1.5rem}.p-toggle{grid-column:1/-1;width:100%;border-radius:10px}.pricing-card-inner{padding:0 1.5rem 1.5rem}}
 
 /* TESTIMONIALS */
 .testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:4rem}
@@ -266,33 +278,45 @@ section{padding:110px 2.5rem}
 .faq-item.open .faq-body{max-height:300px}
 
 /* CONTACT */
-.contact-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:5rem;align-items:start;margin-top:4rem}
-@media(max-width:960px){.contact-grid{grid-template-columns:1fr;gap:3rem}}
-.contact-info-block h3{font-size:1.8rem;font-weight:800;margin-bottom:1rem;letter-spacing:-.5px;color:var(--text)}
-.contact-info-block > p{font-size:1rem;color:var(--text-muted);line-height:1.8;margin-bottom:2.5rem}
-.contact-details{display:flex;flex-direction:column;gap:1.3rem;margin-bottom:2.5rem}
-.contact-row{display:flex;gap:1.1rem;align-items:flex-start}
-.contact-ico{width:48px;height:48px;flex-shrink:0;background:linear-gradient(135deg,rgba(255,109,122,0.1),rgba(181,140,255,0.05));border:1px solid rgba(255,109,122,0.15);border-radius:12px;display:flex;align-items:center;justify-content:center}
-.contact-ico svg{width:20px;height:20px;fill:none;stroke:var(--blue);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.c-label{font-size:.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:.2rem}
-.c-val{font-size:.95rem;font-weight:600;color:var(--text)}
-.hours-block h4{font-size:.85rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:1.2rem;color:var(--text)}
-.hours-list{display:flex;flex-direction:column;gap:.6rem}
-.hours-row{display:flex;justify-content:space-between;align-items:center;background:var(--dark2);border:1px solid var(--border);border-radius:12px;padding:.8rem 1.2rem;font-size:.875rem}
+.contact-desk{margin-top:4rem;background:var(--dark);border:1px solid rgba(15,23,42,0.08);border-radius:18px;box-shadow:var(--shadow-lg);overflow:hidden}
+.desk-top{display:grid;grid-template-columns:1.1fr .9fr;border-bottom:1px solid var(--border);background:linear-gradient(135deg,#fff 0%,var(--grey-100) 100%)}
+@media(max-width:900px){.desk-top{grid-template-columns:1fr}}
+.desk-intro{padding:3rem}
+.desk-kicker{font-size:.76rem;font-weight:800;letter-spacing:1.8px;text-transform:uppercase;color:var(--blue);margin-bottom:1rem}
+.desk-intro h3{font-size:clamp(1.8rem,3vw,2.55rem);font-weight:800;max-width:650px;margin-bottom:1rem;letter-spacing:-.6px}
+.desk-intro p{color:var(--text-muted);font-size:1rem;line-height:1.8;max-width:650px}
+.desk-status{border-left:1px solid var(--border);padding:3rem;display:flex;flex-direction:column;justify-content:space-between;gap:2rem;background:rgba(255,255,255,.62)}
+@media(max-width:900px){.desk-status{border-left:0;border-top:1px solid var(--border)}}
+.status-card{display:grid;gap:1rem}
+.status-item{display:flex;justify-content:space-between;gap:1.2rem;padding-bottom:1rem;border-bottom:1px solid var(--border);font-size:.95rem}
+.status-item:last-child{border-bottom:0;padding-bottom:0}
+.status-label{color:var(--text-muted);font-weight:600}
+.status-value{font-weight:800;color:var(--text);text-align:right}
+.desk-direct{display:flex;flex-wrap:wrap;gap:.75rem}
+.desk-link{display:inline-flex;align-items:center;gap:.55rem;border:1px solid var(--border);background:#fff;border-radius:999px;padding:.65rem .95rem;font-weight:800;font-size:.86rem;color:var(--text);transition:all .25s}
+.desk-link:hover{border-color:rgba(37,99,235,.24);color:var(--blue);transform:translateY(-2px);box-shadow:var(--shadow-sm)}
+.desk-link svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.brief-form{padding:2.5rem 3rem 3rem}
+.brief-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.1rem 1.2rem}
+@media(max-width:720px){.desk-intro,.desk-status,.brief-form{padding:2rem}.brief-grid{grid-template-columns:1fr}}
+.brief-span{grid-column:1/-1}
+.brief-actions{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-top:1.4rem}
+.brief-note{font-size:.82rem;color:var(--text-muted);line-height:1.5;max-width:420px}
+@media(max-width:680px){.brief-actions{flex-direction:column;align-items:stretch}.brief-note{max-width:none;text-align:center}}
 .h-day{color:var(--text-muted);font-weight:500}
 .h-time{font-weight:700;color:var(--text)}
 .h-closed{color:var(--text-muted);font-style:italic}
-.contact-form-wrap{background:var(--dark);border:1px solid var(--border);border-radius:var(--radius);padding:3rem;box-shadow:var(--shadow-lg)}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-bottom:1.2rem}
 @media(max-width:520px){.form-row{grid-template-columns:1fr}}
 .form-group{margin-bottom:1.2rem}
 .form-group label{display:block;font-size:.78rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted);margin-bottom:.6rem}
 .form-group input,.form-group textarea,.form-group select{width:100%;background:var(--dark2);border:1px solid var(--border);border-radius:12px;padding:1rem 1.2rem;color:var(--text);font-size:.95rem;font-family:'DM Sans',sans-serif;transition:all .3s ease;outline:none;resize:none;-webkit-appearance:none;appearance:none}
-.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--blue);background:var(--dark);box-shadow:0 0 0 4px rgba(255,109,122,0.1)}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--blue);background:var(--dark);box-shadow:0 0 0 4px rgba(37,99,235,0.12)}
 .form-group input::placeholder,.form-group textarea::placeholder{color:#94a3b8}
-.form-submit{width:100%;margin-top:.5rem;padding:1.1rem;border-radius:12px;background:linear-gradient(135deg,var(--blue),var(--blue-dark));color:#fff;font-weight:800;font-size:1.05rem;letter-spacing:.2px;transition:all .3s ease;border:none;box-shadow:0 4px 15px rgba(255,109,122,0.2)}
-.form-submit:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(255,109,122,0.4)}
-.form-note{font-size:.8rem;color:var(--text-muted);text-align:center;margin-top:1.2rem;line-height:1.5}
+.form-submit{width:100%;margin-top:.5rem;padding:1.1rem;border-radius:12px;background:linear-gradient(135deg,var(--blue),var(--blue-dark));color:#fff;font-weight:800;font-size:1.05rem;letter-spacing:.2px;transition:all .3s ease;border:none;box-shadow:0 4px 15px rgba(37,99,235,0.2)}
+.form-submit:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(37,99,235,0.35)}
+.brief-actions .form-submit{width:auto;min-width:220px;margin-top:0}
+@media(max-width:680px){.brief-actions .form-submit{width:100%}}
 
 /* FOOTER */
 footer{background:var(--dark2);border-top:1px solid var(--border);padding:6rem 2.5rem 3rem}
@@ -629,33 +653,60 @@ document.addEventListener('DOMContentLoaded', () => {
       <p class="section-sub">No hidden fees. No locked contracts. Honest pricing for startups ready to grow.</p>
     </div>
     <div class="pricing-grid stagger">
-      <div class="pricing-card">
-        <div class="p-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
-        <h3>Website Development</h3>
-        <p class="p-desc">A fully custom, responsive website built to convert visitors into customers and reflect your brand professionally.</p>
-        <div class="price-row"><span class="p-from">From</span><span class="p-amount">$400</span></div>
-        <div class="p-divider"></div>
-        <ul class="p-features"><li>Custom responsive design</li><li>Mobile-first development</li><li>SEO-ready structure</li><li>Contact form integration</li><li>One round of revisions</li></ul>
-        <button class="p-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get a Quote</button>
+      <div class="pricing-card open">
+        <button class="pricing-card-head" type="button" aria-expanded="true">
+          <div class="p-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+          <div>
+            <h3>Website Development</h3>
+            <p class="p-desc">Custom responsive sites built to look credible and convert.</p>
+            <div class="price-row"><span class="p-from">From</span><span class="p-amount">$400</span></div>
+          </div>
+          <span class="p-toggle" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="pricing-card-body">
+          <div class="pricing-card-inner">
+            <div class="p-divider"></div>
+            <ul class="p-features"><li>Custom responsive design</li><li>Mobile-first development</li><li>SEO-ready structure</li><li>Contact form integration</li><li>One round of revisions</li></ul>
+            <button class="p-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get a Quote</button>
+          </div>
+        </div>
       </div>
       <div class="pricing-card featured">
-        <div class="pricing-popular">Most Popular</div>
-        <div class="p-icon"><svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg></div>
-        <h3>Marketing Posts</h3>
-        <p class="p-desc">Consistent, engaging social media content that grows your following, builds brand awareness, and drives leads.</p>
-        <div class="price-row"><span class="p-from">From</span><span class="p-amount">$40</span><span class="p-period">/ month</span></div>
-        <div class="p-divider"></div>
-        <ul class="p-features"><li>Weekly content creation</li><li>Platform-optimized posts</li><li>Custom graphics and captions</li><li>Audience engagement</li><li>Monthly performance report</li></ul>
-        <button class="p-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Start Growing</button>
+        <button class="pricing-card-head" type="button" aria-expanded="false">
+          <div class="p-icon"><svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg></div>
+          <div>
+            <div class="pricing-popular">Most Popular</div>
+            <h3>Marketing Posts</h3>
+            <p class="p-desc">Consistent social content for brand awareness and leads.</p>
+            <div class="price-row"><span class="p-from">From</span><span class="p-amount">$40</span><span class="p-period">/ month</span></div>
+          </div>
+          <span class="p-toggle" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="pricing-card-body">
+          <div class="pricing-card-inner">
+            <div class="p-divider"></div>
+            <ul class="p-features"><li>Weekly content creation</li><li>Platform-optimized posts</li><li>Custom graphics and captions</li><li>Audience engagement</li><li>Monthly performance report</li></ul>
+            <button class="p-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Start Growing</button>
+          </div>
+        </div>
       </div>
       <div class="pricing-card">
-        <div class="p-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-        <h3>Website Maintenance</h3>
-        <p class="p-desc">Keep your site running smoothly with ongoing updates, security monitoring, and performance optimization.</p>
-        <div class="price-row"><span class="p-from">From</span><span class="p-amount">$15</span><span class="p-period">/ month</span></div>
-        <div class="p-divider"></div>
-        <ul class="p-features"><li>Regular content updates</li><li>Speed optimization</li><li>Security monitoring</li><li>Plugin and software updates</li><li>Priority support</li></ul>
-        <button class="p-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get Started</button>
+        <button class="pricing-card-head" type="button" aria-expanded="false">
+          <div class="p-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <div>
+            <h3>Website Maintenance</h3>
+            <p class="p-desc">Ongoing updates, security checks, and performance support.</p>
+            <div class="price-row"><span class="p-from">From</span><span class="p-amount">$15</span><span class="p-period">/ month</span></div>
+          </div>
+          <span class="p-toggle" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="pricing-card-body">
+          <div class="pricing-card-inner">
+            <div class="p-divider"></div>
+            <ul class="p-features"><li>Regular content updates</li><li>Speed optimization</li><li>Security monitoring</li><li>Plugin and software updates</li><li>Priority support</li></ul>
+            <button class="p-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get Started</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -716,39 +767,43 @@ document.addEventListener('DOMContentLoaded', () => {
   <div class="inner">
     <div class="centered reveal">
       <div class="section-eyebrow">Get In Touch</div>
-      <h2 class="section-title">Let's Build Something Great</h2>
-      <p class="section-sub">Ready to elevate your brand? Fill out the form below or reach us directly. We typically respond within a few hours.</p>
+      <h2 class="section-title">Open a Project File</h2>
+      <p class="section-sub">Send the essentials once. We will review the scope, flag the cleanest next step, and reply with a practical path forward.</p>
     </div>
-    <div class="contact-grid reveal">
-      <div class="contact-info-block">
-        <h3>Start the Conversation</h3>
-        <p>Whether you need a full website build, a brand refresh, or ongoing social media support — we would love to hear about your project and see how we can help you grow.</p>
-        <div class="contact-details">
-          <div class="contact-row"><div class="contact-ico"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><div class="c-label">Email</div><div class="c-val">info@elevatestrategies.ca</div></div></div>
-          <div class="contact-row"><div class="contact-ico"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.7A2 2 0 012 .89h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7a2 2 0 011.72 2.02z"/></svg></div><div><div class="c-label">Phone</div><div class="c-val">(613) 555-4721</div></div></div>
-          <div class="contact-row"><div class="contact-ico"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div class="c-label">Location</div><div class="c-val">Ottawa, Ontario, Canada</div></div></div>
-          <div class="contact-row"><div class="contact-ico"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div><div><div class="c-label">Instagram / TikTok</div><div class="c-val">@elevatestrategies</div></div></div>
+    <div class="contact-desk reveal">
+      <div class="desk-top">
+        <div class="desk-intro">
+          <div class="desk-kicker">New Intake</div>
+          <h3>A focused first step for websites, content, and growth support.</h3>
+          <p>Tell us what is happening now, what needs to change, and what would make the project successful. The first reply is not a sales script. It is a short recommendation on scope, timing, and fit.</p>
         </div>
-        <div class="hours-block">
-          <h4>Business Hours</h4>
-          <div class="hours-list">
-<div class="contact-row"><span class="h-day">Monday to Friday</span><span class="h-time">9:00 AM to 6:00 PM</span></div>
-            <div class="hours-row"><span class="h-day">Saturday</span><span class="h-time">10:00 AM to 2:00 PM</span></div>
-            <div class="hours-row"><span class="h-day">Sunday</span><span class="h-closed">Closed</span></div>
+        <aside class="desk-status" aria-label="Contact details">
+          <div class="status-card">
+            <div class="status-item"><span class="status-label">Reply window</span><span class="status-value">1 business day</span></div>
+            <div class="status-item"><span class="status-label">Based in</span><span class="status-value">Ottawa, Canada</span></div>
+            <div class="status-item"><span class="status-label">Office hours</span><span class="status-value">Mon-Fri, 9-6</span></div>
           </div>
-        </div>
+          <div class="desk-direct">
+            <a class="desk-link" href="mailto:info@elevatestrategies.ca"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Email</a>
+            <a class="desk-link" href="tel:6135554721"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.7A2 2 0 012 .89h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7a2 2 0 011.72 2.02z"/></svg>Call</a>
+            <a class="desk-link" href="#"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>@elevatestrategies</a>
+          </div>
+        </aside>
       </div>
-      <div class="contact-form-wrap">
-        <div class="form-row">
+      <div class="brief-form">
+        <div class="brief-grid">
           <div class="form-group"><label>First Name</label><input type="text" placeholder="Alex"/></div>
           <div class="form-group"><label>Last Name</label><input type="text" placeholder="Johnson"/></div>
+          <div class="form-group"><label>Email Address</label><input type="email" placeholder="alex@yourcompany.com"/></div>
+          <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="+1 (613) 000-0000"/></div>
+          <div class="form-group"><label>Service Interested In</label><select><option value="">Select a service...</option><option>Website Development</option><option>Website Maintenance</option><option>Social Media Marketing</option><option>Branding and Growth</option><option>Full Package</option></select></div>
+          <div class="form-group"><label>Timeline</label><select><option value="">Choose timing...</option><option>As soon as possible</option><option>Within 30 days</option><option>1 to 3 months</option><option>Still exploring</option></select></div>
+          <div class="form-group brief-span"><label>Project Notes</label><textarea rows="5" placeholder="What are you trying to launch, fix, or grow? Include links, goals, budget range, or anything useful."></textarea></div>
         </div>
-        <div class="form-group"><label>Email Address</label><input type="email" placeholder="alex@yourcompany.com"/></div>
-        <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="+1 (613) 000-0000"/></div>
-        <div class="form-group"><label>Service Interested In</label><select><option value="">Select a service...</option><option>Website Development</option><option>Website Maintenance</option><option>Social Media Marketing</option><option>Branding and Growth</option><option>Full Package</option></select></div>
-        <div class="form-group"><label>Tell Us About Your Project</label><textarea rows="4" placeholder="Describe your business and what you are looking to achieve..."></textarea></div>
-        <button class="form-submit" id="submitBtn">Send Message</button>
-        <p class="form-note">We respond to all inquiries within 24 hours during business days.</p>
+        <div class="brief-actions">
+          <p class="brief-note">No pressure call required. If the project is not a fit, we will say that clearly and point you toward a better next step.</p>
+          <button class="form-submit" id="submitBtn">Send Project File</button>
+        </div>
       </div>
     </div>
   </div>
@@ -828,10 +883,32 @@ document.querySelectorAll('.faq-q').forEach(q => {
   });
 });
 
+function syncPricingCards() {
+  document.querySelectorAll('.pricing-card').forEach(card => {
+    const body = card.querySelector('.pricing-card-body');
+    const head = card.querySelector('.pricing-card-head');
+    const isOpen = card.classList.contains('open');
+    body.style.maxHeight = isOpen ? `${body.scrollHeight}px` : '0px';
+    head.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+}
+
+document.querySelectorAll('.pricing-card-head').forEach(head => {
+  head.addEventListener('click', () => {
+    const card = head.closest('.pricing-card');
+    const isOpen = card.classList.contains('open');
+    document.querySelectorAll('.pricing-card').forEach(item => item.classList.remove('open'));
+    if (!isOpen) card.classList.add('open');
+    syncPricingCards();
+  });
+});
+syncPricingCards();
+window.addEventListener('resize', syncPricingCards);
+
 document.getElementById('submitBtn').addEventListener('click', function() {
-  this.textContent = 'Message Sent';
-  this.style.background = 'linear-gradient(135deg,#C84C56,#9A2D3C)';
-  setTimeout(() => { this.textContent = 'Send Message'; this.style.background = ''; }, 3500);
+  this.textContent = 'Project File Sent';
+  this.style.background = 'linear-gradient(135deg,#16a34a,#15803d)';
+  setTimeout(() => { this.textContent = 'Send Project File'; this.style.background = ''; }, 3500);
 });
 </script>
 </body>
